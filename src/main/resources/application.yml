@@ -1,0 +1,40 @@
+server:
+  port: 8080
+#redis集群
+spring:
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    timeout: 20000
+#    集群环境打开下面注释，单机不需要打开
+#    cluster:
+#      集群信息
+#      nodes: xxx.xxx.xxx.xxx:xxxx,xxx.xxx.xxx.xxx:xxxx,xxx.xxx.xxx.xxx:xxxx
+#      #默认值是5 一般当此值设置过大时，容易报：Too many Cluster redirections
+#      maxRedirects: 3
+    password:    jedis:      pool:        max-idle: 8        min-idle: 0        max-wait: -1
+  application:
+    name: spring-boot-redis
+
+  datasource:
+    name: localhost
+    url: jdbc:mysql://localhost:3306/ssmdemo
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    filters: stat
+    maxActive: 20
+    initialSize: 1
+    maxWait: 60000
+    minIdle: 1
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: select 'x'
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxOpenPreparedStatements: 20
+mybatis:
+  mapper-locations: classpath:mapping/*.xml
+  type-aliases-package: com.example.demo.model
